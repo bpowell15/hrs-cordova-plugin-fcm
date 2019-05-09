@@ -18,7 +18,7 @@
   under the License.
 -->
 <plugin xmlns="http://apache.org/cordova/ns/plugins/1.0"
-           id="hrs-cordova-plugin-fcm"
+           id="cordova-plugin-fcm"
       version="2.1.2">
     <name>FCMPlugin</name>
     <description>Cordova FCM Plugin</description>
