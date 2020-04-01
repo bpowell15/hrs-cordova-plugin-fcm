@@ -19,6 +19,8 @@ import android.os.Bundle;
 
 import com.google.firebase.messaging.FirebaseMessaging;
 import com.google.firebase.iid.FirebaseInstanceId;
+import com.google.firebase.iid.InstanceIdResult;
+import com.google.android.gms.tasks.OnSuccessListener;
 
 
 import java.util.Map;
@@ -75,13 +77,18 @@ public class FCMPlugin extends CordovaPlugin {
 				cordova.getThreadPool().execute(new Runnable() {
 					public void run() {
 						try{
-							String token = FirebaseInstanceId.getInstance().getToken();
-							callbackContext.success( FirebaseInstanceId.getInstance().getToken() );
-							Log.d(TAG,"\tToken: "+ token);
-							createDefaultChannel();
+							FirebaseInstanceId.getInstance().getInstanceId().addOnSuccessListener( cordova.getActivity(), new OnSuccessListener<InstanceIdResult>() {
+                                    @Override
+                                    public void onSuccess(InstanceIdResult instanceIdResult) {
+                                          String token = instanceIdResult.getToken();
+                                          callbackContext.success( token );
+                                          Log.d(TAG,"\tToken: "+ token);
+                                    }
+                            });
 						}catch(Exception e){
 							Log.d(TAG,"\tError retrieving token");
 						}
+						createDefaultChannel();
 					}
 				});
 			}
