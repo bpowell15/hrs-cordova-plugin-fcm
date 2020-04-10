@@ -95,11 +95,7 @@ static FCMPlugin *fcmPluginInstance;
     NSString * notifyJS = [NSString stringWithFormat:@"%@(%@);", notificationCallback, JSONString];
     NSLog(@"stringByEvaluatingJavaScriptFromString %@", notifyJS);
 
-    if ([self.webView respondsToSelector:@selector(stringByEvaluatingJavaScriptFromString:)]) {
-        [(UIWebView *)self.webView stringByEvaluatingJavaScriptFromString:notifyJS];
-    } else {
-        [self.webViewEngine evaluateJavaScript:notifyJS completionHandler:nil];
-    }
+    [self.webViewEngine evaluateJavaScript:notifyJS completionHandler:nil];
 }
 
 -(void) notifyOfTokenRefresh:(NSString *)token
@@ -107,11 +103,7 @@ static FCMPlugin *fcmPluginInstance;
     NSString * notifyJS = [NSString stringWithFormat:@"%@('%@');", tokenRefreshCallback, token];
     NSLog(@"stringByEvaluatingJavaScriptFromString %@", notifyJS);
 
-    if ([self.webView respondsToSelector:@selector(stringByEvaluatingJavaScriptFromString:)]) {
-        [(UIWebView *)self.webView stringByEvaluatingJavaScriptFromString:notifyJS];
-    } else {
-        [self.webViewEngine evaluateJavaScript:notifyJS completionHandler:nil];
-    }
+    [self.webViewEngine evaluateJavaScript:notifyJS completionHandler:nil];
 }
 
 - (void)deleteInstanceId:(CDVInvokedUrlCommand *)command {

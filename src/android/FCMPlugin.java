@@ -5,6 +5,11 @@ import org.apache.cordova.CallbackContext;
 import org.apache.cordova.CordovaPlugin;
 import org.apache.cordova.CordovaInterface;
 import android.util.Log;
+import android.app.NotificationManager;
+import android.app.NotificationChannel;
+import android.content.Context;
+import static android.os.Build.VERSION.SDK_INT;
+import static android.os.Build.VERSION_CODES.O;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -14,6 +19,8 @@ import android.os.Bundle;
 
 import com.google.firebase.messaging.FirebaseMessaging;
 import com.google.firebase.iid.FirebaseInstanceId;
+import com.google.firebase.iid.InstanceIdResult;
+import com.google.android.gms.tasks.OnSuccessListener;
 
 
 import java.util.Map;
@@ -27,6 +34,10 @@ public class FCMPlugin extends CordovaPlugin {
 	public static String tokenRefreshCallBack = "FCMPlugin.onTokenRefreshReceived";
 	public static Boolean notificationCallBackReady = false;
 	public static Map<String, Object> lastPush = null;
+
+	// Notification Channel
+    static final String CHANNEL_ID = "default-channel-id";
+    private static final CharSequence CHANNEL_NAME = "Default channel";
 
 	public FCMPlugin() {}
 
@@ -66,12 +77,18 @@ public class FCMPlugin extends CordovaPlugin {
 				cordova.getThreadPool().execute(new Runnable() {
 					public void run() {
 						try{
-							String token = FirebaseInstanceId.getInstance().getToken();
-							callbackContext.success( FirebaseInstanceId.getInstance().getToken() );
-							Log.d(TAG,"\tToken: "+ token);
+							FirebaseInstanceId.getInstance().getInstanceId().addOnSuccessListener( cordova.getActivity(), new OnSuccessListener<InstanceIdResult>() {
+                                    @Override
+                                    public void onSuccess(InstanceIdResult instanceIdResult) {
+                                          String token = instanceIdResult.getToken();
+                                          callbackContext.success( token );
+                                          Log.d(TAG,"\tToken: "+ token);
+                                    }
+                            });
 						}catch(Exception e){
 							Log.d(TAG,"\tError retrieving token");
 						}
+						createDefaultChannel();
 					}
 				});
 			}
@@ -174,4 +191,21 @@ public class FCMPlugin extends CordovaPlugin {
 		gWebView = null;
 		notificationCallBackReady = false;
 	}
+
+	private void createDefaultChannel() {
+        Context context = cordova.getActivity();
+        NotificationManager notificationManager =
+                (NotificationManager) context.getSystemService(Context.NOTIFICATION_SERVICE);
+
+        if (SDK_INT < O) return;
+
+        NotificationChannel channel = notificationManager.getNotificationChannel(CHANNEL_ID);
+
+        if (channel != null) return;
+
+        channel = new NotificationChannel(
+                CHANNEL_ID, CHANNEL_NAME, NotificationManager.IMPORTANCE_HIGH);
+
+        notificationManager.createNotificationChannel(channel);
+    }
 }
