@@ -1,4 +1,4 @@
-# Edited to resolve UIWebView issue on cordova < 8
+# Edited to resolve UIWebView issue on cordova < 8, Thanks to origianl authors of the plugins. 
 > To add the cordova plugin to a project run `cordova plugin PATH_TO_FILE` in the appropriate directory
 
 ```javascript
@@ -12,9 +12,6 @@ FCMPlugin.deleteInstanceId().then(()=>{
 })
 ```
 # Google Firebase Cloud Messaging Cordova Push Plugin
-> Extremely easy plug&play push notification plugin for Cordova applications with Google Firebase FCM.
-
->[![paypal](https://www.paypalobjects.com/en_US/i/btn/btn_donateCC_LG.gif)](https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=VF654BMGUPQTJ)
 
 #### Version 2.1.2 (03/06/2017)
 - Tested on Android and iOS using Cordova cli 6.4.0, Cordova android 6.0.0 and Cordova ios 4.3.1
