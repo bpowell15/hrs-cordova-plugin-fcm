@@ -27,7 +27,7 @@ typedef NS_ENUM(NSInteger, FIRLogLevel) {
 // @property(nonatomic, readwrite) FIRAnalyticsConfiguration *analyticsConfiguration;
 
 // Global log level. Defaults to kFIRLogLevelError.
-@property(nonatomic, readwrite, assign) FIRLogLevel logLevel DEPRECATED_MSG_ATTRIBUTE(
-    "Use -FIRDebugEnabled and -FIRDebugDisabled. See FIRApp.h for more details.");
+// @property(nonatomic, readwrite, assign) FIRLogLevel logLevel DEPRECATED_MSG_ATTRIBUTE(
+    // "Use -FIRDebugEnabled and -FIRDebugDisabled. See FIRApp.h for more details.");
 
 @end

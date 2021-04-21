@@ -218,7 +218,7 @@ typedef NS_ENUM(NSInteger, FIRMessagingMessageStatus) {
       withMessageID:(nonnull NSString *)messageID
          timeToLive:(int64_t)ttl;
 
-#pragma mark - Analytics
+// #pragma mark - Analytics
 
 /**
  *  Call this when the app received a downstream message. Used to track message
@@ -231,6 +231,6 @@ typedef NS_ENUM(NSInteger, FIRMessagingMessageStatus) {
  *
  *  @return Information about the downstream message.
  */
-- (nonnull FIRMessagingMessageInfo *)appDidReceiveMessage:(nonnull NSDictionary *)message;
+// - (nonnull FIRMessagingMessageInfo *)appDidReceiveMessage:(nonnull NSDictionary *)message;
 
 @end
