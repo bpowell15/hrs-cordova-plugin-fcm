@@ -3,12 +3,12 @@
 /**
  * This class provides configuration fields for Firebase Analytics.
  */
-// @interface FIRAnalyticsConfiguration : NSObject
+@interface FIRAnalyticsConfiguration : NSObject
 
 /**
  * Returns the shared instance of FIRAnalyticsConfiguration.
  */
-// + (FIRAnalyticsConfiguration *)sharedInstance;
++ (FIRAnalyticsConfiguration *)sharedInstance;
 
 /**
  * Sets the minimum engagement time in seconds required to start a new session. The default value
@@ -26,13 +26,13 @@
  * Sets whether analytics collection is enabled for this app on this device. This setting is
  * persisted across app sessions. By default it is enabled.
  */
-// - (void)setAnalyticsCollectionEnabled:(BOOL)analyticsCollectionEnabled;
+- (void)setAnalyticsCollectionEnabled:(BOOL)analyticsCollectionEnabled;
 
 /**
  * Deprecated. Sets whether measurement and reporting are enabled for this app on this device. By
  * default they are enabled.
  */
-// - (void)setIsEnabled:(BOOL)isEnabled
-    // DEPRECATED_MSG_ATTRIBUTE("Use setAnalyticsCollectionEnabled: instead.");
+- (void)setIsEnabled:(BOOL)isEnabled
+    DEPRECATED_MSG_ATTRIBUTE("Use setAnalyticsCollectionEnabled: instead.");
 
 @end
