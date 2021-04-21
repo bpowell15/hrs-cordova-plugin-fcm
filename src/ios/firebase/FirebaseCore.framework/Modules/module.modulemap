@@ -4,7 +4,7 @@ framework module FirebaseCore {
 
   umbrella header "FirebaseCore.h"
 
-  header "FIRAnalyticsConfiguration.h"
+//  header "FIRAnalyticsConfiguration.h"
   header "FIRApp.h"
   header "FIRConfiguration.h"
   header "FIROptions.h"

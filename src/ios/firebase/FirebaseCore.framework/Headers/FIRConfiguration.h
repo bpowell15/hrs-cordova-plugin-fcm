@@ -1,6 +1,6 @@
 #import <Foundation/Foundation.h>
 
-#import "FIRAnalyticsConfiguration.h"
+// #import "FIRAnalyticsConfiguration.h"
 
 /**
  * The log levels used by FIRConfiguration.
@@ -24,7 +24,7 @@ typedef NS_ENUM(NSInteger, FIRLogLevel) {
 + (FIRConfiguration *)sharedInstance;
 
 // The configuration class for Firebase Analytics.
-@property(nonatomic, readwrite) FIRAnalyticsConfiguration *analyticsConfiguration;
+// @property(nonatomic, readwrite) FIRAnalyticsConfiguration *analyticsConfiguration;
 
 // Global log level. Defaults to kFIRLogLevelError.
 @property(nonatomic, readwrite, assign) FIRLogLevel logLevel DEPRECATED_MSG_ATTRIBUTE(
