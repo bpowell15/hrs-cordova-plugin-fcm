@@ -1,4 +1,4 @@
-#import <FirebaseAnalytics/FirebaseAnalytics.h>
+// #import <FirebaseAnalytics/FirebaseAnalytics.h>
 #import <FirebaseCore/FirebaseCore.h>
 
 #if !defined(__has_include)
