@@ -1,4 +1,4 @@
-# Edited to resolve UIWebView issue on cordova < 8, Thanks to origianl authors of the plugins. 
+# Edited to resolve UIWebView issue on cordova < 8, Thanks to original authors of the plugins. 
 > To add the cordova plugin to a project run `cordova plugin PATH_TO_FILE` in the appropriate directory
 
 ```javascript
